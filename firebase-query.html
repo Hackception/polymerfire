@@ -360,6 +360,7 @@ Polymer({
 
             this.__map[key] = value;
             this.splice('data', previousChildIndex + 1, 0, value);
+            this.notifyPath('data');
           }
         },
 
@@ -374,6 +375,7 @@ Polymer({
             this.async(function() {
               this.syncToMemory(function() {
                 this.splice('data', this.__indexFromKey(key), 1);
+                this.notifyPath('data');
               });
             });
           }
@@ -430,6 +432,7 @@ Polymer({
               this.syncToMemory(function() {
                 this.splice('data', index, 1);
                 this.splice('data', targetIndex, 0, value);
+                this.notifyPath('data');
               });
             });
           }
